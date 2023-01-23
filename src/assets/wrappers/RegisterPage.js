@@ -36,11 +36,6 @@ const Wrapper = styled.section`
     letter-spacing: 1px;
     cursor: pointer;
   }
-
-
-
-
-
 `
 
 export default Wrapper;

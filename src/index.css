@@ -169,3 +169,7 @@ ul {
   height: 35px;
 }
 
+.Toastify__toast {
+    text-transform: capitalize;
+}
+
