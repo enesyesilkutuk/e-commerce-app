@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Logo, FormRow } from "../components";
 import Wrapper from "../assets/wrappers/RegisterPage";
 import { toast} from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, registerUser } from "../features/user/userSlice";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const initialState = {
@@ -13,11 +13,21 @@ const Register = () => {
     password: "",
     isMember: true,
   };
-
+  // console.log(localStorage.getItem("user"))
+  //localStorage.removeItem("user")
+  
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { isLoading, user } = useSelector((store) => store.user);
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/")
+      }, 1000);
+    } 
+  }, [user, navigate]);
 
   const [values, setValues] = useState(initialState);
 
