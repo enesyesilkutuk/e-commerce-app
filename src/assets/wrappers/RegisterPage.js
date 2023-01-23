@@ -23,9 +23,18 @@ const Wrapper = styled.section`
     margin: 0;
     margin-top: 1rem;
     text-align: center;
+    user-select: none;
   }
   .btn {
     margin-top: 1rem;
+  }
+
+  .member-btn {
+    background-color: transparent;
+    border: transparent;
+    color:  #3b82f6;
+    letter-spacing: 1px;
+    cursor: pointer;
   }
 
 
