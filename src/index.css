@@ -98,6 +98,10 @@ ul {
     margin: 0 auto;
 }
 
+.full-page {
+    min-height: 100vh;
+  }
+
 .btn {
   cursor: pointer;
   color: var(--white);
