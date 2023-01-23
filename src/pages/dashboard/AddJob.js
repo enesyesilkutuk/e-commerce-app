@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const AddJob = () => {
   return (
@@ -6,4 +6,4 @@ const AddJob = () => {
   )
 }
 
-export default AddJob
+export default AddJob;

@@ -1,23 +1,9 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import { Navbar, SmallSidebar, BigSidebar } from "../../components";
-import Wrapper from "../../assets/wrappers/SharedLayout";
+import React from 'react';
 
 const SharedLayout = () => {
   return (
-    <Wrapper>
-      <main className="">
-        <SmallSidebar />
-        <BigSidebar />
-        <div>
-          <Navbar />
-          <div className="dashboard-page">
-            <Outlet />
-          </div>
-        </div>
-      </main>
-    </Wrapper>
-  );
-};
+    <h1>SharedLayout</h1>
+  )
+}
 
 export default SharedLayout;
