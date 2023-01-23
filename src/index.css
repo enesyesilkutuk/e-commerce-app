@@ -102,6 +102,37 @@ ul {
     min-height: 100vh;
   }
 
+  .form {
+    width: 90vw;
+    max-width: 500px;
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 2rem 2.5rem;
+    margin: 3rem auto;
+    transition: 0.3s ease-in-out all;
+  }
+  
+  .form-label {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    background-color: #f0f4f8;
+    border:1px solid #bcccdc;
+  }
+
+  .form-row {
+    margin-bottom: 1rem;
+}
+
 .btn {
   cursor: pointer;
   color: var(--white);
@@ -117,6 +148,10 @@ ul {
   display: inline-block;
 }
 
+.btn-block {
+    width: 100%;
+}
+
 .btn:hover {
     background-color: #1d4ed8;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -126,5 +161,11 @@ ul {
 .btn-hero {
     font-size: 1.25rem;
     padding: 0.5rem 1.25rem;
+}
+
+.form-input,
+.form-select,
+.btn-block {
+  height: 35px;
 }
 
