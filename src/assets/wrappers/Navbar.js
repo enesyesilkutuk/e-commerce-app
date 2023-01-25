@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.nav`
-  border: 1px solid red;
   height: var(--nav-height);
   display: flex;
   align-items: center;
