@@ -13,8 +13,6 @@ const Register = () => {
     password: "",
     isMember: true,
   };
-  // console.log(localStorage.getItem("user"))
-  //localStorage.removeItem("user")
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
