@@ -5,6 +5,7 @@ import { getUserFromLocalStorage, addUserToLocalStorage } from "../../utils/loca
 
 const initialState = {
     isLoading: false,
+    isSidebarOpen: false,
     user: getUserFromLocalStorage(),
 };
 
@@ -29,6 +30,11 @@ export const loginUser = createAsyncThunk("user/loginUser", async (user,thunkAPI
 const userSlice = createSlice({
     name: "user",
     initialState,
+    reducers: {
+        toggleSidebar: (state) => {
+            state.isSidebarOpen = !state.isSidebarOpen;
+        }
+    },
     extraReducers: (builder) => {
         builder
         .addCase(registerUser.pending, (state) => {
@@ -95,3 +101,4 @@ const userSlice = createSlice({
 // }
 
 export default userSlice.reducer;
+export const { toggleSidebar } = userSlice.actions;
