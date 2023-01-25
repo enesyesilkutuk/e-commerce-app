@@ -46,7 +46,7 @@ const Register = () => {
 
    if (isMember) {
     dispatch(loginUser({email, password}));
-    setValues(initialState);
+    // setValues(initialState);
     return;
    }
     dispatch(registerUser({name, email, password}));
