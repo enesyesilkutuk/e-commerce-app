@@ -4,9 +4,11 @@ import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { handleChange, clearValues, createJob, editJob } from "../../features/job/jobSlice";
+import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     isLoading,
     position,
@@ -31,9 +33,16 @@ const AddJob = () => {
       dispatch(editJob({jobId: editJobId, job: {
         position, company, jobLocation, status, jobType
       }}));
+      setTimeout(() => {
+        navigate("/all-jobs");
+      }, 500);
       return;
     }
-    dispatch(createJob({position, company, jobLocation, status, jobType}))
+    dispatch(createJob({position, company, jobLocation, status, jobType}));
+    setTimeout(() => {
+      navigate("/all-jobs");
+    }, 500);
+    return;
   };
 
   const handleJobInput = (e) => {
