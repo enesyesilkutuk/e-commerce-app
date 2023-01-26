@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
-  border:1px solid red;
+  /* border:1px solid red; */
   margin-top: 4rem;
   h2 {
     text-transform: none;
