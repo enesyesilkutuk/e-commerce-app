@@ -15,8 +15,8 @@ const JobsContainer = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <Loading center />
-    }
+    return <Loading center />;
+  }
 
   if (jobs.length === 0) {
     return (
@@ -31,10 +31,7 @@ const JobsContainer = () => {
       <h5>jobs info</h5>
       <div className="jobs">
         {jobs.map((job) => {
-            console.log(job)
-            return (
-                <Job  key={job._id} {...job} />
-            )
+          return <Job key={job._id} {...job} />;
         })}
       </div>
     </Wrapper>

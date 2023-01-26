@@ -39,6 +39,36 @@ export const createJob = createAsyncThunk(
   }
 );
 
+export const deleteJob = createAsyncThunk("job/deleteJob", async (jobId, thunkAPI) => {
+  thunkAPI.dispatch(showLoading());
+  try {
+    const res = await customFetch.delete(`jobs/${jobId}`, {
+      headers: {
+        Authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+      }
+    });
+    thunkAPI.dispatch(getAllJobs());
+    return res.data;
+  } catch (error) {
+      thunkAPI.dispatch(hideLoading());
+      return thunkAPI.rejectWithValue(error.response.data.msg);
+  }
+});
+
+export const editJob = createAsyncThunk("job/editJob", async ({jobId, job}, thunkAPI) => {
+  try {
+    const res = await customFetch.patch(`/jobs/${jobId}`, job, {
+      headers: {
+        Authorization: `Bearer ${thunkAPI.getState().user.user.token}`
+      }
+    });
+    thunkAPI.dispatch(clearValues());
+    return res.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data.msg);
+  }
+})
+
 const jobSlice = createSlice({
   name: "job",
   initialState,
@@ -48,6 +78,9 @@ const jobSlice = createSlice({
     },
     clearValues: () => {
       return {...initialState, jobLocation: getUserFromLocalStorage()?.location || ""};
+    },
+    setEditJob: (state, {payload}) => {
+      return {...state, isEditing: true, ...payload }
     },
   },
   extraReducers: (builder) => {
@@ -63,8 +96,26 @@ const jobSlice = createSlice({
         state.isLoading = false;
         toast.error(payload);
     })
+    .addCase(deleteJob.fulfilled, (_, {payload}) => {
+      toast.success(payload.msg);
+    })
+    .addCase(deleteJob.rejected, (_, {payload}) => {
+      toast.error(payload);
+    })
+    .addCase(editJob.pending, (state) => {
+      state.isLoading = true;
+    })
+    .addCase(editJob.fulfilled, (state, action) => {
+      state.isLoading = false;
+      console.log(action)
+      toast.success('Job modified');
+    })
+    .addCase(editJob.rejected, (state, {payload}) => {
+      state.isLoading = false;
+      toast.error(payload);
+    })
   }
 });
 
 export default jobSlice.reducer;
-export const { handleChange, clearValues } = jobSlice.actions;
+export const { handleChange, clearValues, setEditJob } = jobSlice.actions;

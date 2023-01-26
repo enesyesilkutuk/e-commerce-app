@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/Job';
 import JobInfo from './JobInfo';
 import moment from 'moment';
+import { deleteJob, setEditJob } from '../features/job/jobSlice';
 
 const Job = ({company, position, _id, jobLocation, jobType, createdAt, status}) => {
     const dispatch = useDispatch();
@@ -30,8 +31,8 @@ const Job = ({company, position, _id, jobLocation, jobType, createdAt, status}) 
         </div>
         <footer>
             <div className="actions">
-                <Link to="/add-job" className='btn edit-btn' onClick={() => console.log("hello")}>edit</Link>
-                <button type="button" className='btn delete-btn' onClick={() => console.log("hello")}>delete</button>
+                <Link to="/add-job" className='btn edit-btn' onClick={() => dispatch(setEditJob({editJobId:_id, company, position, jobLocation, jobType, status}))}>edit</Link>
+                <button type="button" className='btn delete-btn' onClick={() => dispatch(deleteJob(_id))}>delete</button>
             </div>
         </footer>
     </div>
