@@ -28,6 +28,7 @@ export const createJob = createAsyncThunk(
         },
       });
       thunkAPI.dispatch(clearValues());
+      console.log(res.data)
       return res.data;
     } catch (error) {
       if (error.response.status === 401) {
@@ -67,7 +68,7 @@ export const editJob = createAsyncThunk("job/editJob", async ({jobId, job}, thun
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data.msg);
   }
-})
+});
 
 const jobSlice = createSlice({
   name: "job",
@@ -105,10 +106,9 @@ const jobSlice = createSlice({
     .addCase(editJob.pending, (state) => {
       state.isLoading = true;
     })
-    .addCase(editJob.fulfilled, (state, action) => {
+    .addCase(editJob.fulfilled, (state) => {
       state.isLoading = false;
-      console.log(action)
-      toast.success('Job modified');
+      toast.success('Job modified...');
     })
     .addCase(editJob.rejected, (state, {payload}) => {
       state.isLoading = false;
