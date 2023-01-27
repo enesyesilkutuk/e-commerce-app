@@ -6,9 +6,12 @@ import { showStats } from '../../features/allJobs/allJobsSlice';
 const Stats = () => {
  const dispatch = useDispatch();
  const {isLoading, monthlyApplications} = useSelector((store) => store.allJobs);
+ 
  useEffect(() => {
-  dispatch(showStats())
- }, [dispatch]);
+  dispatch(showStats());
+}, [dispatch]);
+
+ if (isLoading) return <Loading center />
  
   return (
     <>
