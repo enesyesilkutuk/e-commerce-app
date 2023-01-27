@@ -45,7 +45,6 @@ export const showStats = createAsyncThunk("allJobs/showStats", async(_,thunkAPI)
         Authorization: `Bearer ${thunkAPI.getState().user.user.token}`
       }
     });
-    console.log(res.data)
     return res.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data.msg);
