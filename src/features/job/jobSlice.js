@@ -28,7 +28,7 @@ export const createJob = createAsyncThunk(
         },
       });
       thunkAPI.dispatch(clearValues());
-      console.log(res.data)
+      // console.log(res.data)
       return res.data;
     } catch (error) {
       if (error.response.status === 401) {

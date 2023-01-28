@@ -9,11 +9,14 @@ const SearchContainer = () => {
   const { isLoading, search, searchStatus, searchType, sort, sortOptions } =
     useSelector((store) => store.allJobs);
     const { statusOptions, jobTypeOptions } = useSelector((store) => store.job);
+  
   const handleSearch = (e) => {
+    if (isLoading) return;
     const name = e.target.name;
     const value = e.target.value;
     dispatch(handleChange({name, value}));
   };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(clearFilters());
