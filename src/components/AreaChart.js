@@ -2,8 +2,9 @@ import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const AreaChartComponent = ({data}) => {
+  console.log(data);
   return (
-    <ResponsiveContainer width="100%" height={300} style={{border: "1px solid red"}}>
+    <ResponsiveContainer width="100%" height={300}>
     <AreaChart
       width={500}
       height={400}
