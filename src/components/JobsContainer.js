@@ -8,7 +8,7 @@ import { getAllJobs } from "../features/allJobs/allJobsSlice";
 import PageBtnContainer from "./PageBtnContainer";
 
 const JobsContainer = () => {
-  const { jobs, isLoading, totalJobs, search, page, searchStatus, searchType, sort,  numOfPages } = useSelector((store) => store.allJobs);
+  const { jobs, isLoading, totalJobs, search, page, searchStatus, searchType, sort, numOfPages } = useSelector((store) => store.allJobs);
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -36,7 +36,7 @@ const JobsContainer = () => {
           return <Job key={job._id} {...job} />;
         })}
       </div>
-      {  <PageBtnContainer /> }
+      { numOfPages > 1 && <PageBtnContainer /> }
     </Wrapper>
   );
 };
