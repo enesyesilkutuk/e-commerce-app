@@ -5,9 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Job from "./Job";
 import Loading from "./Loading";
 import { getAllJobs } from "../features/allJobs/allJobsSlice";
+import PageBtnContainer from "./PageBtnContainer";
 
 const JobsContainer = () => {
-  const { jobs, isLoading, totalJobs } = useSelector((store) => store.allJobs);
+  const { jobs, isLoading, totalJobs, page, numOfPages } = useSelector((store) => store.allJobs);
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -35,6 +36,7 @@ const JobsContainer = () => {
           return <Job key={job._id} {...job} />;
         })}
       </div>
+      {  <PageBtnContainer /> }
     </Wrapper>
   );
 };
