@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import customFetch from "../../utils/axios";
+import customFetch, { checkForUnauthorizedResponse } from "../../utils/axios";
 
 const initialFiltersState = {
   search: "",
@@ -40,7 +40,7 @@ export const getAllJobs = createAsyncThunk(
       });
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue("There was an error");
+      return checkForUnauthorizedResponse(error, thunkAPI);
     }
   }
 );
@@ -54,7 +54,7 @@ export const showStats = createAsyncThunk("allJobs/showStats", async(_,thunkAPI)
     });
     return res.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data.msg);
+    return checkForUnauthorizedResponse(error, thunkAPI);
   }
 });
 
