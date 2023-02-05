@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import customFetch, { checkForUnauthorizedResponse } from "../../utils/axios";
 import { getUserFromLocalStorage } from "../../utils/localStorage";
-import { getAllJobs, hideLoading, showLoading } from "../allJobs/allJobsSlice";
+import { changePage, getAllJobs, hideLoading, showLoading } from "../allJobs/allJobsSlice";
 
 const initialState = {
   isLoading: false,
@@ -27,7 +27,7 @@ export const createJob = createAsyncThunk(
         },
       });
       thunkAPI.dispatch(clearValues());
-      // console.log(res.data)
+      thunkAPI.dispatch(changePage(1));
       return res.data;
     } catch (error) {
      return checkForUnauthorizedResponse(error, thunkAPI);
